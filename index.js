@@ -64,9 +64,6 @@ Write a function called `inning` that generates a random number of points that a
 function inning( ){
 
   let teamScore = Math.round(Math.random() * 2);
-  // let teamScore = Math.floor(Math.random() * 3); this one also works 
-  
-  
   return teamScore ; 
   
 }
@@ -87,14 +84,15 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(inning , numberOfInnings ){
+function finalScore(cb , numberOfInnings ){
 
-  let homeScore = inning();
-  let awayScore = inning();
+  let homeScore = 0;
+  let awayScore = 0;
   
-  for (i = 0; i <= numberOfInnings; i++){
-     homeScore ++;
-     awayScore ++;
+  for (let i = 0; i <= numberOfInnings; i++){
+
+     homeScore = homeScore + cb();
+     awayScore = awayScore + cb();
   
   }
   
@@ -131,8 +129,24 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(cb , numberOfInnings) {
+  let homeScore = 0;
+  let awayScore = 0;
+
+let ordinalSuffix = [ '1st' , '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th'];
+
+for (let i = 1; i <= numberOfInnings; i++){
+  homeScore = homeScore + cb();
+  awayScore = awayScore + cb(); 
+
+
+  console.log(`${ordinalSuffix[i-1]} inning: ${homeScore} - ${awayScore}`);
+
 }
 
+console.log(`Final Score: ${homeScore} - ${awayScore}`);
+
+}
+
+console.log(scoreboard(inning, 9 ));
 
