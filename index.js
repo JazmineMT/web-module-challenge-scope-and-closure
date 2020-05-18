@@ -18,6 +18,9 @@ function processFirstItem(stringList, callback) {
   return callback(stringList[0])
 }
 
+
+
+
 // ⭐️ Example Challenge END ⭐️
 
 
@@ -27,11 +30,16 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ *  
+ * When the function counter1 will store the data each time you call the function because the variable of 'count' is located inside the function.
+ * When counter2 is invoked the data will always start at 0 so it won't store the data each time it is called.  
  * 
  * 2. Which of the two uses a closure? How can you tell?
+ * counter1 has a variable within it's function that only can be accesses from within the function. Not on the global scope.
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ *  counter1 would be most preferable when needing ot keep storing data - for instance a game so it would keep count
+ *  counter2 would be prefereable when we want to run a program when we want to start a zero everytime 
 */
 
 // counter1 code
@@ -56,11 +64,14 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning( ){
 
-    /*Code Here*/
-
+  let teamScore = Math.round(Math.random() * 2);
+  return teamScore ; 
+  
 }
+
+console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -76,11 +87,29 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(cb , numberOfInnings ){
 
-  /*Code Here*/
+  let homeScore = 0;
+  let awayScore = 0;
+  
+  for (let i = 0; i <= numberOfInnings; i++){
 
-}
+     homeScore = homeScore + cb();
+     awayScore = awayScore + cb();
+  
+  }
+  
+  let finalScoreObject = {
+    "Home": homeScore ,
+    "Away": awayScore
+  }
+  
+  return finalScoreObject;
+  
+  }
+  
+   console.log(finalScore(inning, 9 ));
+   
 
 /* Task 4: 
 
@@ -103,8 +132,24 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(cb , numberOfInnings) {
+  let homeScore = 0;
+  let awayScore = 0;
+
+let ordinalSuffix = [ '1st' , '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th'];
+
+for (let i = 1; i <= numberOfInnings; i++){
+  homeScore = homeScore + cb();
+  awayScore = awayScore + cb(); 
+
+
+  console.log(`${ordinalSuffix[i-1]} inning: ${homeScore} - ${awayScore}`);
+
 }
 
+console.log(`Final Score: ${homeScore} - ${awayScore}`);
+
+}
+
+console.log(scoreboard(inning, 9 ));
 
