@@ -27,11 +27,16 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ *  
+ * When the function counter1 will store the data each time you call the function because the variable of 'count' is located inside the function.
+ * When counter2 is invoked the data will always start at 0 so it won't store the data each time it is called.  
  * 
  * 2. Which of the two uses a closure? How can you tell?
+ * counter1 has a variable within it's function that only can be accesses from within the function. Not on the global scope.
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ *  counter1 would be most preferable when needing ot keep storing data - for instance a game so it would keep count
+ *  counter2 would be prefereable when we want to run a program when we want to start a zero everytime 
 */
 
 // counter1 code
