@@ -63,7 +63,9 @@ Write a function called `inning` that generates a random number of points that a
 
 function inning( ){
 
-  let teamScore = Math.floor(Math.random() * 3);
+  let teamScore = Math.round(Math.random() * 2);
+  // let teamScore = Math.floor(Math.random() * 3); this one also works 
+  
   
   return teamScore ; 
   
@@ -85,11 +87,28 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(inning , numberOfInnings ){
 
-  /*Code Here*/
-
-}
+  let homeScore = inning();
+  let awayScore = inning();
+  
+  for (i = 0; i <= numberOfInnings; i++){
+     homeScore ++;
+     awayScore ++;
+  
+  }
+  
+  let finalScoreObject = {
+    "Home": homeScore ,
+    "Away": awayScore
+  }
+  
+  return finalScoreObject;
+  
+  }
+  
+   console.log(finalScore(inning, 9 ));
+   
 
 /* Task 4: 
 
