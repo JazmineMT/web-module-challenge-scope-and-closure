@@ -18,6 +18,9 @@ function processFirstItem(stringList, callback) {
   return callback(stringList[0])
 }
 
+
+
+
 // ⭐️ Example Challenge END ⭐️
 
 
